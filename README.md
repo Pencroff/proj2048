@@ -6,14 +6,14 @@ Experiments with auto-play strategies for 2048 game
 
 * Windows
   
-      SET GOOS=js&&SET GOARCH=wasm&&go build -o ./docs/proj2048.wasm github.com/pencroff/proj2048/app
+      SET GOOS=js&&SET GOARCH=wasm&&go build -ldflags="-s -w" -o ./docs/proj2048.wasm github.com/pencroff/proj2048/app
 
 * Linux
 
       GOOS=js GOARCH=wasm go build -o ./docs/proj2048.wasm github.com/pencroff/proj2048/app
 * Pack
 
-        gzip -9 -v -c proj2048.wasm > proj2048.wasm.gz
+        gzip -9 -v -c ./docs/proj2048.wasm > ./docs/proj2048.wasm.gz
 
 #### Refs
 
