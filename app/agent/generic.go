@@ -4,7 +4,7 @@ import (
 	"encoding/binary"
 	"github.com/OneOfOne/xxhash"
 	log "github.com/go-pkgz/lgr"
-	"github.com/pencroff/ai-agents/proj2048/common"
+	"github.com/pencroff/proj2048/app/common"
 	"hash"
 )
 

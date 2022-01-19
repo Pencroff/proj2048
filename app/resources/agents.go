@@ -1,8 +1,8 @@
 package resources
 
 import (
-	"github.com/pencroff/ai-agents/proj2048/agent"
-	"github.com/pencroff/ai-agents/proj2048/helper"
+	"github.com/pencroff/proj2048/app/agent"
+	"github.com/pencroff/proj2048/app/helper"
 	"time"
 )
 

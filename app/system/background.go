@@ -2,7 +2,7 @@ package system
 
 import (
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/pencroff/ai-agents/proj2048/helper"
+	"github.com/pencroff/proj2048/app/helper"
 	"github.com/sedyh/mizu/pkg/engine"
 )
 

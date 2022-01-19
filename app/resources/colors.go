@@ -2,8 +2,8 @@ package resources
 
 import (
 	log "github.com/go-pkgz/lgr"
-	. "github.com/pencroff/ai-agents/proj2048/common"
-	. "github.com/pencroff/ai-agents/proj2048/helper"
+	. "github.com/pencroff/proj2048/app/common"
+	. "github.com/pencroff/proj2048/app/helper"
 )
 
 var BoardStrColor ColorStrPair

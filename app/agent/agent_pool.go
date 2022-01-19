@@ -2,7 +2,7 @@ package agent
 
 import (
 	"fmt"
-	"github.com/pencroff/ai-agents/proj2048/common"
+	"github.com/pencroff/proj2048/app/common"
 	"math"
 	"strings"
 )

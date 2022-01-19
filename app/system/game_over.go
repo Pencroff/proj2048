@@ -3,10 +3,10 @@ package system
 import (
 	"github.com/fogleman/gg"
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/pencroff/ai-agents/proj2048/common"
-	"github.com/pencroff/ai-agents/proj2048/component"
-	"github.com/pencroff/ai-agents/proj2048/control"
-	"github.com/pencroff/ai-agents/proj2048/resources"
+	"github.com/pencroff/proj2048/app/common"
+	"github.com/pencroff/proj2048/app/component"
+	"github.com/pencroff/proj2048/app/control"
+	"github.com/pencroff/proj2048/app/resources"
 	"github.com/sedyh/mizu/pkg/engine"
 	"image"
 )

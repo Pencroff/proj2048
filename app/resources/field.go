@@ -2,8 +2,8 @@ package resources
 
 import (
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/pencroff/ai-agents/proj2048/common"
-	. "github.com/pencroff/ai-agents/proj2048/helper"
+	"github.com/pencroff/proj2048/app/common"
+	. "github.com/pencroff/proj2048/app/helper"
 	"image"
 )
 
