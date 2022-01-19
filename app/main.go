@@ -22,7 +22,7 @@ func initResources() {
 }
 
 func runGame() {
-	ebiten.SetFPSMode(ebiten.FPSModeVsyncOffMaximum)
+	ebiten.SetFPSMode(ebiten.FPSModeVsyncOn)
 	ebiten.SetWindowResizable(true)
 	ebiten.SetWindowSize(1024, 768)
 	if err := ebiten.RunGame(engine.NewGame(&scene.Game{})); err != nil {
