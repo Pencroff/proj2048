@@ -24,7 +24,7 @@ func initResources() {
 func runGame() {
 	ebiten.SetFPSMode(ebiten.FPSModeVsyncOn)
 	ebiten.SetWindowResizable(true)
-	ebiten.SetWindowSize(1024, 768)
+	ebiten.SetWindowSize(500, 800)
 	if err := ebiten.RunGame(engine.NewGame(&scene.Game{})); err != nil {
 		log.Printf("[Fatal] Can't run game: %v", err)
 	}
