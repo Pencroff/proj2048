@@ -1,6 +1,16 @@
 # github.com/OneOfOne/xxhash v1.2.8
 ## explicit; go 1.11
 github.com/OneOfOne/xxhash
+# github.com/Pencroff/fluky v0.0.4
+## explicit; go 1.17
+github.com/Pencroff/fluky
+github.com/Pencroff/fluky/rng
+# github.com/Pencroff/go-toolkit v0.0.6
+## explicit; go 1.15
+github.com/Pencroff/go-toolkit/bits
+github.com/Pencroff/go-toolkit/extended_type
+github.com/Pencroff/go-toolkit/general
+github.com/Pencroff/go-toolkit/math
 # github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d
 ## explicit
 github.com/StackExchange/wmi
@@ -40,6 +50,16 @@ github.com/go-ole/go-ole/oleutil
 github.com/go-pkgz/lgr
 # github.com/go-task/slim-sprig v0.0.0-20210107165309-348f09dbbbc0
 ## explicit; go 1.13
+# github.com/golang-migrate/migrate/v4 v4.15.1
+## explicit; go 1.16
+github.com/golang-migrate/migrate/v4
+github.com/golang-migrate/migrate/v4/database
+github.com/golang-migrate/migrate/v4/database/multistmt
+github.com/golang-migrate/migrate/v4/database/postgres
+github.com/golang-migrate/migrate/v4/internal/url
+github.com/golang-migrate/migrate/v4/source
+github.com/golang-migrate/migrate/v4/source/file
+github.com/golang-migrate/migrate/v4/source/iofs
 # github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 ## explicit
 github.com/golang/freetype/raster
@@ -48,8 +68,7 @@ github.com/golang/freetype/truetype
 ## explicit; go 1.9
 # github.com/golang/snappy v0.0.4
 ## explicit
-github.com/golang/snappy
-# github.com/google/pprof v0.0.0-20210407192527-94a9f03dee38
+# github.com/google/pprof v0.0.0-20210715191844-86eeefc3e471
 ## explicit; go 1.14
 # github.com/hajimehoshi/ebiten v1.11.6
 ## explicit; go 1.12
@@ -91,6 +110,12 @@ github.com/hajimehoshi/ebiten/v2/internal/uidriver/glfw
 github.com/hajimehoshi/ebiten/v2/internal/uidriver/js
 github.com/hajimehoshi/ebiten/v2/internal/uidriver/mobile
 github.com/hajimehoshi/ebiten/v2/text
+# github.com/hashicorp/errwrap v1.1.0
+## explicit
+github.com/hashicorp/errwrap
+# github.com/hashicorp/go-multierror v1.1.1
+## explicit; go 1.13
+github.com/hashicorp/go-multierror
 # github.com/jaypipes/ghw v0.8.0
 ## explicit; go 1.12
 github.com/jaypipes/ghw
@@ -123,12 +148,21 @@ github.com/jezek/xgb
 github.com/jezek/xgb/randr
 github.com/jezek/xgb/render
 github.com/jezek/xgb/xproto
-# github.com/linkedin/goavro/v2 v2.10.1
+# github.com/jmoiron/sqlx v1.3.5
+## explicit; go 1.10
+github.com/jmoiron/sqlx
+github.com/jmoiron/sqlx/reflectx
+# github.com/joho/godotenv v1.4.0
 ## explicit; go 1.12
-github.com/linkedin/goavro/v2
+github.com/joho/godotenv
+# github.com/lib/pq v1.10.5
+## explicit; go 1.13
+github.com/lib/pq
+github.com/lib/pq/oid
+github.com/lib/pq/scram
 # github.com/magicsea/gosprite v0.0.0-20201208094141-c065a00bb09d
 ## explicit; go 1.13
-# github.com/mitchellh/go-homedir v1.0.0
+# github.com/mitchellh/go-homedir v1.1.0
 ## explicit
 github.com/mitchellh/go-homedir
 # github.com/onsi/ginkgo/v2 v2.0.0
@@ -147,12 +181,19 @@ github.com/sedyh/mizu/pkg/engine
 # github.com/spaolacci/murmur3 v1.1.0
 ## explicit
 github.com/spaolacci/murmur3
-# github.com/stretchr/testify v1.7.0
+# github.com/stretchr/objx v0.3.0
+## explicit; go 1.12
+github.com/stretchr/objx
+# github.com/stretchr/testify v1.7.1
 ## explicit; go 1.13
 github.com/stretchr/testify/assert
+github.com/stretchr/testify/mock
 # github.com/tdewolff/canvas v0.0.0-20211230013015-6230030f0d2d
 ## explicit; go 1.17
 github.com/tdewolff/canvas/font
+# go.uber.org/atomic v1.9.0
+## explicit; go 1.13
+go.uber.org/atomic
 # golang.org/x/exp v0.0.0-20211111183329-cb5df436b1a8
 ## explicit; go 1.17
 golang.org/x/exp/shiny/driver/gldriver
@@ -207,12 +248,12 @@ golang.org/x/text/runes
 golang.org/x/text/transform
 # golang.org/x/tools v0.1.8-0.20211029000441-d6a9af8af023
 ## explicit; go 1.17
-# google.golang.org/protobuf v1.26.0
+# google.golang.org/protobuf v1.27.1
 ## explicit; go 1.9
 # gopkg.in/yaml.v2 v2.4.0
 ## explicit; go 1.15
 gopkg.in/yaml.v2
-# gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
+# gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 ## explicit
 gopkg.in/yaml.v3
 # howett.net/plist v0.0.0-20181124034731-591f970eefbb

@@ -1,0 +1,17 @@
+version: '2.4'
+services:
+  db:
+    image: postgres:${PG_IMAGE_TAG}
+#    build: ./dal
+#    env_file:
+#      - database.env # configure postgres
+    environment:
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_DB=${PG_DB_NAME}
+      - PGPASSWORD=${PG_PASSWORD}
+    volumes:
+      - ./data/dev__db/:/var/lib/postgresql/data/ # persist data even if container shuts down
+      - ./data/dev__backup:/home/backups
+    ports:
+      - ${PG_PORT}:5432

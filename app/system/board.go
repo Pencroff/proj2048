@@ -15,7 +15,6 @@ import (
 	"github.com/pencroff/proj2048/app/resources"
 	"github.com/sedyh/mizu/pkg/engine"
 	"image"
-	"math/rand"
 	"strconv"
 	"time"
 )
@@ -53,7 +52,7 @@ func (b *Board) Update(w engine.World) {
 
 	if b.State == common.StartGame {
 		b.Description = fmt.Sprintf("%s (%d)", b.Agent.GetName(), b.Agent.GetGameId())
-		rand.Seed(b.Agent.GetGameSeed())
+		b.Flk.Seed(b.Agent.GetGameSeed())
 		for idx, el := range b.List {
 			if el != nil {
 				el.Removed = true

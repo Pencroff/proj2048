@@ -1,12 +1,15 @@
 package component
 
 import (
+	"github.com/Pencroff/fluky"
+	. "github.com/Pencroff/go-toolkit/general"
 	"github.com/pencroff/proj2048/app/agent"
 	"github.com/pencroff/proj2048/app/common"
 	"github.com/pencroff/proj2048/app/helper"
 	"github.com/pencroff/proj2048/app/resources"
 	"image"
-	"math/rand"
+
+	"strconv"
 )
 
 type BoardProp struct {
@@ -26,20 +29,21 @@ type BoardProp struct {
 	Agent       agent.Agent
 	IsFinished  bool
 	Mode        common.PlayMode
+	Flk         *fluky.Fluky
 }
 
 func (p *BoardProp) NewTile() (idx int, prop TileProp) {
 	lst := p.SerializeList()
 	idxLst := filterEmptyIndexes(lst)
-	valueLst := []int{2, 4}
-	if len(idxLst) == 0 {
+
+	_, el := p.Flk.PickOne(InterfaceSlice(idxLst))
+	if el == nil {
 		return -1, TileProp{}
 	}
-	idx = rand.Int() % len(idxLst)
-	idx = idxLst[idx]
+	idx = el.(int)
 
-	valueIdx := rand.Int() % len(valueLst)
-	value := valueLst[valueIdx]
+	strVal := p.Flk.Weighted(InterfaceSlice([]string{"2", "4"}), []uint{9, 1}).(string)
+	value, _ := strconv.Atoi(strVal)
 	pos := p.ResolveScreenPositionByIndex(idx)
 
 	prop = TileProp{

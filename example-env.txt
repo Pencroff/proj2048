@@ -1,0 +1,9 @@
+# rename to .env and populate secret values
+
+PG_IMAGE_TAG=14.2-alpine
+
+PG_HOST=localhost
+PG_PORT=54325
+PG_USER=db-user
+PG_PASSWORD=p@ssw0rd
+PG_DB_NAME=db-name

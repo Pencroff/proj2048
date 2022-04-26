@@ -270,3 +270,5 @@ cython_debug/
 .idea/
 
 _zzz/
+
+data/

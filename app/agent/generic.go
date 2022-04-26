@@ -16,9 +16,10 @@ type Agent interface {
 	GetGameSeed() int64
 
 	MakeMove(step int, score int, noMove bool, valueList []int) common.Direction
-	LogStep(step int, score int, noMove bool, valueList []int, d common.Direction) error
 
 	GameFinished(step int, score int, noMove bool, valueList []int, d common.Direction)
+
+	LogStep(step int, score int, noMove bool, valueList []int, d common.Direction) error
 }
 
 type GenericAgent struct {

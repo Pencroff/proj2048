@@ -1,6 +1,8 @@
 package scene
 
 import (
+	"github.com/Pencroff/fluky"
+	"github.com/Pencroff/fluky/rng"
 	"github.com/pencroff/proj2048/app/common"
 	"github.com/pencroff/proj2048/app/component"
 	"github.com/pencroff/proj2048/app/entity"
@@ -69,8 +71,9 @@ func NewBoard() (field *entity.Field, board *entity.Board) {
 			Direction:   common.NoDirection,
 			FieldProps:  &field.FieldProps,
 			List:        make([]*component.TileProp, size.X*size.Y),
-			Agent:       agnt,
-			Mode:        common.AutoPlay,
+			Agent:       resources.HumanAgentInstance,
+			Mode:        common.Manual,
+			Flk:         fluky.NewFluky(rng.NewSmallPrng()),
 		},
 	}
 	return
