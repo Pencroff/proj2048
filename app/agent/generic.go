@@ -5,6 +5,7 @@ import (
 	"github.com/OneOfOne/xxhash"
 	log "github.com/go-pkgz/lgr"
 	"github.com/pencroff/proj2048/app/common"
+	"github.com/pencroff/proj2048/app/stats"
 	"hash"
 )
 
@@ -14,6 +15,8 @@ type Agent interface {
 	IsManual() bool
 	GetGameId() int64
 	GetGameSeed() int64
+
+	GameStarted(valueList []int)
 
 	MakeMove(step int, score int, noMove bool, valueList []int) common.Direction
 
@@ -29,9 +32,11 @@ type GenericAgent struct {
 	noMoveCounter int
 	gameId        int64
 	hasher        hash.Hash64
+	recorder      *stats.StatRecorder
 }
 
-func NewGenericAgent(id string, name string, isManual bool, startGameId int64) GenericAgent {
+func NewGenericAgent(id string, name string,
+	isManual bool, startGameId int64, recorder *stats.StatRecorder) GenericAgent {
 	return GenericAgent{
 		id:            id,
 		name:          name,
@@ -39,6 +44,7 @@ func NewGenericAgent(id string, name string, isManual bool, startGameId int64) G
 		noMoveCounter: 0,
 		gameId:        startGameId,
 		hasher:        xxhash.New64(),
+		recorder:      recorder,
 	}
 }
 
@@ -70,6 +76,10 @@ func (a *GenericAgent) GetGameSeed() int64 {
 	return int64(a.hasher.Sum64())
 }
 
+func (a *GenericAgent) GameStarted(valueList []int) {
+	log.Printf("GenericAgent.GameStarted: %v", valueList)
+}
+
 func (a *GenericAgent) LogStep(step int, score int, noMove bool, lst []int, d common.Direction) error {
 	log.Printf("=============")
 	log.Printf("%s - %d", a.GetName(), a.gameId)
@@ -84,9 +94,9 @@ func (a *GenericAgent) LogStep(step int, score int, noMove bool, lst []int, d co
 }
 
 func (a *GenericAgent) GameFinished(step int, score int, noMove bool, lst []int, d common.Direction) {
-	a.gameId += 1
 	err := a.LogStep(step, score, noMove, lst, d)
 	if err != nil {
 		log.Printf("[ERROR] GameFinished - Can't log step: %v", err)
 	}
+	a.gameId += 1
 }

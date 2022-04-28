@@ -19,10 +19,9 @@ import (
 )
 
 func main() {
-	//db := doMigrations()
-	//log.Printf("db: %+v", db)
+	db := doMigrations()
 	initResources()
-	runGame()
+	runGame(db)
 }
 
 func initResources() {
@@ -31,11 +30,14 @@ func initResources() {
 	resources.InitTiles()
 }
 
-func runGame() {
+func runGame(db *sqlx.DB) {
 	ebiten.SetFPSMode(ebiten.FPSModeVsyncOn)
 	ebiten.SetWindowResizable(true)
 	ebiten.SetWindowSize(500, 800)
-	if err := ebiten.RunGame(engine.NewGame(&scene.Game{})); err != nil {
+	game := &scene.Game{}
+	game.SetDb(db)
+	world := engine.NewGame(game)
+	if err := ebiten.RunGame(world); err != nil {
 		log.Printf("[Fatal] Can't run game: %v", err)
 	}
 }

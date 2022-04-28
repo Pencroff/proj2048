@@ -3,6 +3,7 @@ package agent
 import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/pencroff/proj2048/app/common"
+	"github.com/pencroff/proj2048/app/stats"
 )
 
 type HumanAgent struct {
@@ -32,8 +33,8 @@ func (a *HumanAgent) MakeMove(_ int, _ int, _ bool, _ []int) (direction common.D
 	return
 }
 
-func NewHumanAgent(gameId int64) Agent {
+func NewHumanAgent(gameId int64, recorder *stats.StatRecorder) Agent {
 	return &HumanAgent{
-		GenericAgent: NewGenericAgent("haman_agent", "Human Agent", true, gameId),
+		GenericAgent: NewGenericAgent("haman_agent", "Human Agent", true, gameId, recorder),
 	}
 }

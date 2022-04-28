@@ -23,29 +23,16 @@ type Board struct {
 	*component.BoardProp
 }
 
-var state = common.Nope
-var spacePressed = 0
-
 func (b *Board) Update(w engine.World) {
-	if state != b.State {
-		state = b.State
-		//log.Printf("[INFO] State: %s", state)
-	}
-	if spacePressed > 0 {
-		spacePressed -= 1
+
+	if b.KeyPressedDelay > 0 {
+		b.KeyPressedDelay -= 1
 	}
 
-	if b.State == common.AgentAction && ebiten.IsKeyPressed(ebiten.KeySpace) && spacePressed == 0 {
-		spacePressed = 8
-		if b.Mode == common.AutoPlay {
-			b.Mode = common.Manual
-			b.Agent = resources.HumanAgentInstance
-			b.Speed = 20
-		} else if b.Mode == common.Manual {
-			b.Mode = common.AutoPlay
-			b.Agent = resources.PoolAgentInstance
-			b.Speed = 500
-		}
+	if b.State == common.AgentAction && ebiten.IsKeyPressed(ebiten.KeySpace) && b.KeyPressedDelay == 0 {
+		b.KeyPressedDelay = 8
+		b.Mode, b.Speed = b.ChangeMode(b.Mode)
+		b.Agent = b.AgentMap[b.Mode]
 		b.Description = b.Agent.GetName()
 		b.State = common.StartGame
 	}
@@ -53,35 +40,17 @@ func (b *Board) Update(w engine.World) {
 	if b.State == common.StartGame {
 		b.Description = fmt.Sprintf("%s (%d)", b.Agent.GetName(), b.Agent.GetGameId())
 		b.Flk.Seed(b.Agent.GetGameSeed())
-		for idx, el := range b.List {
-			if el != nil {
-				el.Removed = true
-				b.List[idx] = nil
-			}
-		}
+		b.CleanField()
 		b.IsFinished = false
 		b.Score = 0
 		b.Step = 0
-		b.State = common.FillRand
+		b.FillTiles(2, w)
+		b.Agent.GameStarted(b.SerializeList())
+		b.State = common.AgentAction
 	}
 	if b.State == common.FillRand {
-		var tileCnt int
-		if b.Step == 0 {
-			tileCnt = 2
-		} else {
-			tileCnt = 1
-		}
-
-		for n := 0; n < tileCnt; n++ {
-			b.addTile(w)
-		}
+		b.FillTiles(1, w)
 		b.State = common.AgentAction
-		if b.Step == 0 {
-			err := b.Agent.LogStep(b.Step, b.Score, b.NoMove, b.SerializeList(), common.NoDirection)
-			if err != nil {
-				log.Printf("[ERROR] Can't log step: %v", err)
-			}
-		}
 		return
 	}
 	if b.State == common.AgentAction {
@@ -274,4 +243,30 @@ func (b *Board) isAnimationFinished() bool {
 		}
 	}
 	return true
+}
+
+func (b Board) ChangeMode(oldMode common.PlayMode) (mode common.PlayMode, speed int) {
+	if oldMode == common.AutoPlay {
+		mode = common.Manual
+		speed = 20
+	} else if oldMode == common.Manual {
+		mode = common.AutoPlay
+		speed = 500
+	}
+	return
+}
+
+func (b *Board) FillTiles(n int, w engine.World) {
+	for i := 0; i < n; i++ {
+		b.addTile(w)
+	}
+}
+
+func (b *Board) CleanField() {
+	for idx, el := range b.List {
+		if el != nil {
+			el.Removed = true
+			b.List[idx] = nil
+		}
+	}
 }

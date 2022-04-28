@@ -2,6 +2,7 @@ package agent
 
 import (
 	"github.com/pencroff/proj2048/app/common"
+	"github.com/pencroff/proj2048/app/stats"
 )
 
 type ClockwiseAgent struct {
@@ -18,9 +19,9 @@ func (a *ClockwiseAgent) MakeMove(step int, _ int, noMove bool, _ []int) (direct
 	return
 }
 
-func NewClockwiseAgent(gameId int64) Agent {
+func NewClockwiseAgent(gameId int64, recorder *stats.StatRecorder) Agent {
 	return &ClockwiseAgent{
-		GenericAgent: NewGenericAgent("clockwise_agent", "Clockwise Agent", false, gameId),
+		GenericAgent: NewGenericAgent("clockwise_agent", "Clockwise Agent", false, gameId, recorder),
 		directionMap: map[int]common.Direction{
 			0: common.Up,
 			1: common.Right,

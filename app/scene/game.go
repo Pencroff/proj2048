@@ -1,20 +1,19 @@
 package scene
 
 import (
-	"github.com/Pencroff/fluky"
-	"github.com/Pencroff/fluky/rng"
-	"github.com/pencroff/proj2048/app/common"
+	"github.com/jmoiron/sqlx"
 	"github.com/pencroff/proj2048/app/component"
 	"github.com/pencroff/proj2048/app/entity"
 	"github.com/pencroff/proj2048/app/helper"
-	"github.com/pencroff/proj2048/app/resources"
+	"github.com/pencroff/proj2048/app/stats"
 	"github.com/pencroff/proj2048/app/system"
 	"github.com/sedyh/mizu/pkg/engine"
-	"image"
 	"time"
 )
 
-type Game struct{}
+type Game struct {
+	db *sqlx.DB
+}
 
 func (g *Game) Setup(w engine.World) {
 	w.AddComponents(
@@ -34,7 +33,9 @@ func (g *Game) Setup(w engine.World) {
 		&system.Metrics{},
 	)
 
-	fieldPtr, boardPtr := NewBoard()
+	recorder := stats.NewStatRecorder(g.db)
+
+	fieldPtr, boardPtr := entity.NewBoard(recorder)
 
 	w.AddEntities(
 		&entity.Metrics{
@@ -48,43 +49,6 @@ func (g *Game) Setup(w engine.World) {
 	)
 }
 
-func NewBoard() (field *entity.Field, board *entity.Board) {
-	size := resources.Config.FieldSize
-	headerOffset := resources.Config.HeaderRect.Size()
-	headerOffset.X = 0
-	fieldRect := resources.Config.FieldRect.Add(headerOffset)
-	boardRect := resources.Config.BoardRect
-	field = NewField(size, fieldRect, resources.FieldColor)
-	agnt := resources.PoolAgentInstance
-	board = &entity.Board{
-		component.BoardProp{
-			Name:        "2048",
-			Description: agnt.GetName(),
-			Score:       0,
-			Step:        0,
-			NoMove:      false,
-			Speed:       resources.Config.Speed,
-			State:       common.StartGame,
-			Color:       resources.BoardColor,
-			Size:        size,
-			BoardRect:   boardRect,
-			Direction:   common.NoDirection,
-			FieldProps:  &field.FieldProps,
-			List:        make([]*component.TileProp, size.X*size.Y),
-			Agent:       resources.HumanAgentInstance,
-			Mode:        common.Manual,
-			Flk:         fluky.NewFluky(rng.NewSmallPrng()),
-		},
-	}
-	return
-}
-
-func NewField(size image.Point, rect image.Rectangle, color common.ColorPair) (field *entity.Field) {
-	field = &entity.Field{
-		component.FieldProps{
-			Position: rect.Min,
-			Sprite:   resources.RenderField(size, rect, color),
-		},
-	}
-	return
+func (g *Game) SetDb(db *sqlx.DB) {
+	g.db = db
 }

@@ -5,8 +5,9 @@ import "image/color"
 type PlayMode string
 
 const (
-	Manual   PlayMode = "manual"
-	AutoPlay          = "auto_play"
+	Manual     PlayMode = "manual"
+	AutoPlay            = "auto_play"
+	Simulation          = "simulation"
 )
 
 type Direction string

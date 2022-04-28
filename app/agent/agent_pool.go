@@ -3,6 +3,7 @@ package agent
 import (
 	"fmt"
 	"github.com/pencroff/proj2048/app/common"
+	"github.com/pencroff/proj2048/app/stats"
 	"math"
 	"strings"
 )
@@ -52,6 +53,10 @@ func (p *PoolAgent) GetGameId() int64 {
 
 func (p *PoolAgent) GetGameSeed() int64 {
 	return p.agent.GetGameSeed()
+}
+
+func (p *PoolAgent) GameStarted(valueList []int) {
+	p.agent.GameStarted(valueList)
 }
 
 func (p *PoolAgent) MakeMove(step int, score int, noMove bool, lst []int) common.Direction {
@@ -139,14 +144,14 @@ func createAgentStat() AgentStat {
 	}
 }
 
-func NewPoolAgent(gameId int64) Agent {
-	agent1 := NewClockwiseAgent(gameId)
+func NewPoolAgent(gameId int64, recorder *stats.StatRecorder) Agent {
+	agent1 := NewClockwiseAgent(gameId, recorder)
 	return &PoolAgent{
 		currentIdx: 0,
 		agent:      agent1,
 		pool: []Agent{
 			agent1,
-			NewAnticlockwiseAgent(gameId),
+			NewAnticlockwiseAgent(gameId, recorder),
 		},
 		statMap: make(map[string]AgentStat),
 	}

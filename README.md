@@ -15,6 +15,20 @@ Experiments with auto-play strategies for 2048 game
 
         gzip -9 -v -c ./docs/proj2048.wasm > ./docs/proj2048.wasm.gz
 
+## Stats record to DB
+
+* Start Game
+  * agent id - human, clockwise_agent, anticlockwise_agent
+  * mode - manual, auto_play, simulation
+  * game id - 0 - 65535
+  * init field
+* Move
+* Finish game
+  * score
+  * steps
+  * noMoveCounter
+  * finish field
+
 #### Refs
 
 * [ebiten + webassembly](https://ebiten.org/documents/webassembly.html)

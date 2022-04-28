@@ -15,7 +15,7 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/lib/pq v1.10.5
 	github.com/pkg/errors v0.9.1
-	github.com/sedyh/mizu v1.0.3
+	github.com/sedyh/mizu v1.0.4
 	github.com/spaolacci/murmur3 v1.1.0
 	github.com/stretchr/testify v1.7.1
 	github.com/tdewolff/canvas v0.0.0-20211230013015-6230030f0d2d

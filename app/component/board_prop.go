@@ -13,23 +13,25 @@ import (
 )
 
 type BoardProp struct {
-	Name        string
-	Description string
-	Score       int
-	Step        int
-	NoMove      bool
-	Speed       int
-	State       common.BoardState
-	Color       common.ColorPair
-	Size        image.Point
-	BoardRect   image.Rectangle
-	Direction   common.Direction
-	FieldProps  *FieldProps
-	List        []*TileProp
-	Agent       agent.Agent
-	IsFinished  bool
-	Mode        common.PlayMode
-	Flk         *fluky.Fluky
+	Name            string
+	Description     string
+	Score           int
+	Step            int
+	NoMove          bool
+	Speed           int
+	State           common.BoardState
+	Color           common.ColorPair
+	Size            image.Point
+	BoardRect       image.Rectangle
+	Direction       common.Direction
+	FieldProps      *FieldProps
+	List            []*TileProp
+	Mode            common.PlayMode
+	Agent           agent.Agent
+	AgentMap        map[common.PlayMode]agent.Agent
+	IsFinished      bool
+	Flk             *fluky.Fluky
+	KeyPressedDelay int
 }
 
 func (p *BoardProp) NewTile() (idx int, prop TileProp) {

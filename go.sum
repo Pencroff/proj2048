@@ -875,6 +875,8 @@ github.com/satori/go.uuid v1.2.0/go.mod h1:dA0hQrYB0VpLJoorglMZABFdXlWrHn1NEOzdh
 github.com/seccomp/libseccomp-golang v0.9.1/go.mod h1:GbW5+tmTXfcxTToHLXlScSlAvWlF4P2Ca7zGrPiEpWo=
 github.com/sedyh/mizu v1.0.3 h1:bWRNP8Gp3R9SMZhuGvWqsPH9NldOpvHzzrz81yfczro=
 github.com/sedyh/mizu v1.0.3/go.mod h1:/8dPXzGnafYlpnCDCi8QiZOyGZD8cIynw7ERNmc/wEE=
+github.com/sedyh/mizu v1.0.4 h1:cD0yGMqQd5qsseHoUHgxMCan57SvS5olGujTZfOCQqA=
+github.com/sedyh/mizu v1.0.4/go.mod h1:/8dPXzGnafYlpnCDCi8QiZOyGZD8cIynw7ERNmc/wEE=
 github.com/shopspring/decimal v0.0.0-20180709203117-cd690d0c9e24/go.mod h1:M+9NzErvs504Cn4c5DxATwIqPbtswREoFCre64PpcG4=
 github.com/shopspring/decimal v0.0.0-20200227202807-02e2044944cc/go.mod h1:DKyhrW/HYNuLGql+MJL6WCR6knT2jwCFRcu2hWCYk4o=
 github.com/shopspring/decimal v1.2.0/go.mod h1:DKyhrW/HYNuLGql+MJL6WCR6knT2jwCFRcu2hWCYk4o=

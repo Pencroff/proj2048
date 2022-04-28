@@ -175,7 +175,7 @@ github.com/pkg/errors
 # github.com/pmezard/go-difflib v1.0.0
 ## explicit
 github.com/pmezard/go-difflib/difflib
-# github.com/sedyh/mizu v1.0.3
+# github.com/sedyh/mizu v1.0.4
 ## explicit; go 1.17
 github.com/sedyh/mizu/pkg/engine
 # github.com/spaolacci/murmur3 v1.1.0
