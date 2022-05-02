@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS game_step;
+DROP TABLE IF EXISTS game_stat;

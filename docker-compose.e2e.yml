@@ -1,0 +1,11 @@
+version: '2.4'
+services:
+  db:
+    image: postgres:${PG_IMAGE_TAG}
+    environment:
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_DB=${PG_DB_NAME}
+      - PGPASSWORD=${PG_PASSWORD}
+    ports:
+      - ${PG_PORT}:5432

@@ -64,7 +64,3 @@ func doMigrations() *sqlx.DB {
 	m.Down()
 	return db
 }
-
-//r := rng.NewSmallPrng()
-//r.Seed(time.Now().UnixNano())
-//fmt.Printf("seed: %x%x\n", r.Uint64(), r.Uint64())

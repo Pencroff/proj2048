@@ -22,8 +22,16 @@ Experiments with auto-play strategies for 2048 game
   * mode - manual, auto_play, simulation
   * game id - 0 - 65535
   * init field
-* Move
-* Finish game
+  * RETURN - game stat id (should be same for same agent id, mode and game id)
+* Move - should have game step table
+  * game stat id
+  * step
+  * score
+  * noMove bool
+  * game field - before move, after adding rnd tile, after move state can be evaluated
+  * direction
+  * NOTE - game-move-id same for - game stat id and step
+* Finish game - can be saved to game table
   * score
   * steps
   * noMoveCounter
