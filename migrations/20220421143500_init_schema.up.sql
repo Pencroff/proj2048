@@ -6,9 +6,10 @@ CREATE TABLE game_stat
     agent_id        text               NOT NULL,
     mode            text               NOT NULL,
     field_start_end jsonb,
-    score           bigint,
-    step_counter    bigint,
-    no_move_counter bigint
+    score           integer,
+    step_counter    integer,
+    max_tile        integer,
+    no_move_counter integer
 );
 
 CREATE TABLE game_step

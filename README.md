@@ -34,6 +34,7 @@ Experiments with auto-play strategies for 2048 game
 * Finish game - can be saved to game table
   * score
   * steps
+  * maxTile
   * noMoveCounter
   * finish field
 

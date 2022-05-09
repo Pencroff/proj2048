@@ -71,6 +71,11 @@ func (l *Lcg) Uint64() uint64 {
 	return l.seed % l.modulus
 }
 
+func (l *Lcg) Int63() int64 {
+	v := int64(l.Uint64() >> 1)
+	return v
+}
+
 func (l *Lcg) Float64() float64 {
 	rnd := l.Uint64()
 	return float64(rnd) * l.floatMul

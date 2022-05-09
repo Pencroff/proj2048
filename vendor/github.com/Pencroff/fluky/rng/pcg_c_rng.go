@@ -77,14 +77,12 @@ import "C"
 type PcgCRng struct {
 	rng               C.pcg64_random_t
 	defaultMultiplier C.pcg128_t
-	floatMul          float64
 }
 
 func NewPcgCRng() *PcgCRng {
 	v := &PcgCRng{
 		rng:               C.init(),
 		defaultMultiplier: C.mul,
-		floatMul:          1 / float64(1<<64-1),
 	}
 	v.Seed(11111)
 	return v
@@ -98,7 +96,16 @@ func (r *PcgCRng) Uint64() uint64 {
 	return uint64(C.pcg64_random_r(&r.rng))
 }
 
+func (r *PcgCRng) Int63() int64 {
+	return int64(r.Uint64() >> 1)
+}
+
 func (r *PcgCRng) Float64() float64 {
-	rnd := r.Uint64()
-	return float64(rnd) * r.floatMul
+	rnd := r.Uint64() >> (uint64Bits - precisionBits)
+	var res float64
+	if rnd == maxDoublePrecision {
+		rnd -= 1
+	}
+	res = float64(rnd) / maxDoublePrecision
+	return res
 }

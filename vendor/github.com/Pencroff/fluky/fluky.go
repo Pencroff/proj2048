@@ -2,9 +2,14 @@ package fluky
 
 import (
 	"github.com/Pencroff/fluky/rng"
-	"github.com/Pencroff/go-toolkit/math"
 )
 
+const (
+	maxInt64 = 1<<63 - 1
+	minInt64 = -1 << 63
+)
+
+// NewFluky create new Fluky instance and return pointer to it
 func NewFluky(r rng.RandomGenerator) *Fluky {
 	return &Fluky{r}
 }
@@ -18,34 +23,17 @@ func (f *Fluky) Seed(v int64) {
 	f.rng.Seed(v)
 }
 
-// Weighted choose random value base on weights
-func (f *Fluky) Weighted(values []interface{}, weights []uint) interface{} {
-	sum := uint(0)
-	mxIdx := math.Min(len(values), len(weights)) - 1
-	for idx, weight := range weights {
-		if idx > mxIdx {
-			break
-		}
-		sum += weight
-	}
-	rnd := f.rng.Float64() * float64(sum)
-	for idx, weight := range weights {
-		rnd -= float64(weight)
-		if rnd <= 0 {
-			return values[idx]
-		}
-	}
-	return nil
+// Uint64 returns random uint64 value
+func (f *Fluky) Uint64() uint64 {
+	return f.rng.Uint64()
 }
 
-// PickOne choose random value from slice and return index and value
-func (f Fluky) PickOne(values []interface{}) (idx int, value interface{}) {
-	l := uint64(len(values))
-	if l == 0 {
-		return -1, nil
-	}
-	r := f.rng.Uint64()
-	idx = int(r % l)
-	value = values[idx]
-	return
+// Int63 returns random int64 value in range [0, 2^63)
+func (f *Fluky) Int63() int64 {
+	return f.rng.Int63()
+}
+
+// Float64 returns random float64 value in range [0, 1)
+func (f *Fluky) Float64() float64 {
+	return f.rng.Float64()
 }

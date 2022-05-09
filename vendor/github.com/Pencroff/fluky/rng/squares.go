@@ -52,7 +52,16 @@ func (s *Squares) Uint64() uint64 {
 	return s.seed
 }
 
+func (s *Squares) Int63() int64 {
+	return int64(s.Uint64() >> 1)
+}
+
 func (s *Squares) Float64() float64 {
-	rnd := s.Uint64()
-	return float64(rnd) * s.floatMul
+	rnd := s.Uint64() >> (uint64Bits - precisionBits)
+	var res float64
+	if rnd == maxDoublePrecision {
+		rnd -= 1
+	}
+	res = float64(rnd) / maxDoublePrecision
+	return res
 }

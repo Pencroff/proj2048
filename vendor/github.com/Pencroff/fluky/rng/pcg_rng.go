@@ -37,9 +37,18 @@ func (r *PcgRng) Uint64() uint64 {
 	return r.stateToValue()
 }
 
+func (r *PcgRng) Int63() int64 {
+	return int64(r.Uint64() >> 1)
+}
+
 func (r *PcgRng) Float64() float64 {
-	rnd := r.Uint64()
-	return float64(rnd) * r.floatMul
+	rnd := r.Uint64() >> (uint64Bits - precisionBits)
+	var res float64
+	if rnd == maxDoublePrecision {
+		rnd -= 1
+	}
+	res = float64(rnd) / maxDoublePrecision
+	return res
 }
 
 func (r *PcgRng) step() {

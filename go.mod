@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/OneOfOne/xxhash v1.2.8
-	github.com/Pencroff/fluky v0.0.4
+	github.com/Pencroff/fluky v0.0.5
 	github.com/Pencroff/go-toolkit v0.0.6
 	github.com/fogleman/gg v1.3.0
 	github.com/go-pkgz/lgr v0.10.4
@@ -69,7 +69,7 @@ require (
 	github.com/opencontainers/runc v1.0.2 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
-	github.com/stretchr/objx v0.3.0 // indirect
+	github.com/stretchr/objx v0.4.0 // indirect
 	go.opencensus.io v0.23.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	golang.org/x/exp v0.0.0-20211111183329-cb5df436b1a8 // indirect
