@@ -13,7 +13,7 @@ type Agent interface {
 	GetId() string
 	GetName() string
 	IsManual() bool
-	GetGameId() int64
+	GetGameId() int
 	GetGameSeed() int64
 
 	GameStarted(valueList []int)
@@ -30,13 +30,13 @@ type GenericAgent struct {
 	name          string
 	isManual      bool
 	noMoveCounter int
-	gameId        int64
+	gameId        int
 	hasher        hash.Hash64
 	recorder      *stats.StatRecorder
 }
 
 func NewGenericAgent(id string, name string,
-	isManual bool, startGameId int64, recorder *stats.StatRecorder) GenericAgent {
+	isManual bool, startGameId int, recorder *stats.StatRecorder) GenericAgent {
 	return GenericAgent{
 		id:            id,
 		name:          name,
@@ -60,7 +60,7 @@ func (a *GenericAgent) IsManual() bool {
 	return a.isManual
 }
 
-func (a *GenericAgent) GetGameId() int64 {
+func (a *GenericAgent) GetGameId() int {
 	return a.gameId
 }
 

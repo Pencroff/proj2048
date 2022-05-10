@@ -3,6 +3,7 @@ module github.com/pencroff/proj2048
 go 1.17
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.5.0
 	github.com/OneOfOne/xxhash v1.2.8
 	github.com/Pencroff/fluky v0.0.5
 	github.com/Pencroff/go-toolkit v0.0.6

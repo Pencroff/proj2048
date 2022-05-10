@@ -11,7 +11,7 @@ import (
 type AgentStatRecord struct {
 	Score  int
 	Step   int
-	GameId int64
+	GameId int
 }
 
 type AgentAvgRecord struct {
@@ -47,7 +47,7 @@ func (p *PoolAgent) IsManual() bool {
 	return p.agent.IsManual()
 }
 
-func (p *PoolAgent) GetGameId() int64 {
+func (p *PoolAgent) GetGameId() int {
 	return p.agent.GetGameId()
 }
 
@@ -144,7 +144,7 @@ func createAgentStat() AgentStat {
 	}
 }
 
-func NewPoolAgent(gameId int64, recorder *stats.StatRecorder) Agent {
+func NewPoolAgent(gameId int, recorder *stats.StatRecorder) Agent {
 	agent1 := NewClockwiseAgent(gameId, recorder)
 	return &PoolAgent{
 		currentIdx: 0,

@@ -42,5 +42,8 @@ Experiments with auto-play strategies for 2048 game
 
 * [ebiten + webassembly](https://ebiten.org/documents/webassembly.html)
 * [compress webassembly](https://levelup.gitconnected.com/best-practices-for-webassembly-using-golang-1-15-8dfa439827b8)
+* [optimal algorithm](https://stackoverflow.com/questions/22342854/what-is-the-optimal-algorithm-for-the-game-2048)
+* [hash link1](https://softwareengineering.stackexchange.com/questions/49550/which-hashing-algorithm-is-best-for-uniqueness-and-speed)
+* [hash link2](https://stackoverflow.com/questions/3665247/fastest-hash-for-non-cryptographic-uses)
 
 

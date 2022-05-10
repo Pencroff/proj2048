@@ -33,7 +33,7 @@ func (a *HumanAgent) MakeMove(_ int, _ int, _ bool, _ []int) (direction common.D
 	return
 }
 
-func NewHumanAgent(gameId int64, recorder *stats.StatRecorder) Agent {
+func NewHumanAgent(gameId int, recorder *stats.StatRecorder) Agent {
 	return &HumanAgent{
 		GenericAgent: NewGenericAgent("haman_agent", "Human Agent", true, gameId, recorder),
 	}

@@ -19,7 +19,7 @@ func (a *AnticlockwiseAgent) MakeMove(step int, _ int, noMove bool, _ []int) (di
 	return
 }
 
-func NewAnticlockwiseAgent(gameId int64, recorder *stats.StatRecorder) Agent {
+func NewAnticlockwiseAgent(gameId int, recorder *stats.StatRecorder) Agent {
 	return &AnticlockwiseAgent{
 		GenericAgent: NewGenericAgent("anticlockwise_agent", "Anticlockwise Agent", false, gameId, recorder),
 		directionMap: map[int]common.Direction{
