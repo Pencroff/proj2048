@@ -61,6 +61,7 @@ func doMigrations() *sqlx.DB {
 	m, err := migrate.NewWithDatabaseInstance(
 		"file://migrations",
 		"postgres", driver)
+	m.Down()
 	m.Up()
 	return db
 }

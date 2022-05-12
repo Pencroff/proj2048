@@ -50,7 +50,7 @@ func NewBoard(recorder *stats.StatRecorder) (field *Field, board *Board) {
 }
 
 func CreateAgentMap(recorder *stats.StatRecorder) map[common.PlayMode]agent.Agent {
-	gameId := time.Now().UTC().UnixNano() % (1 << 16)
+	gameId := int(time.Now().UTC().UnixNano() % (1 << 16))
 	m := make(map[common.PlayMode]agent.Agent)
 	m[common.Manual] = agent.NewHumanAgent(gameId, recorder)
 	m[common.AutoPlay] = agent.NewPoolAgent(gameId, recorder)

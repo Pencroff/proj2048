@@ -17,9 +17,9 @@ CREATE TABLE game_stat
 CREATE TABLE game_step
 (
     game_stat_id bigint NOT NULL,
-    step         bigint NOT NULL,
-    score        bigint NOT NULL,
-    noMove       boolean,
+    step         integer NOT NULL,
+    score        integer NOT NULL,
+    no_move      boolean,
     field        jsonb  NOT NULL,
     direction    text   NOT NULL,
     PRIMARY KEY (game_stat_id, step),
